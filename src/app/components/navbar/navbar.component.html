@@ -1,3 +1,13 @@
-<p>
-  navbar works!
-</p>
+
+<div class="ui inverted segment">
+  <div class="ui inverted secondary pointing menu">
+    <a
+      [ngClass]="{'active': active}"
+      class="item"
+      (mouseenter)="active = true"
+      (mouseleave)="active = false"
+    >
+      Home
+    </a>
+  </div>
+</div>
