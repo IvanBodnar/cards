@@ -2,13 +2,13 @@
 <div class="ui center aligned basic grid">
   <div class="ui five wide column">
     <div class="ui middle aligned divided selection list">
-      <div class="item">
+      <div *ngFor="let theme of themesArray" class="item">
         <div class="right floated content">
-          <div class="ui orange basic button">Add</div>
+          <div class="ui orange basic button">Comenzar</div>
         </div>
         <div class="ui left floated red horizontal label">9</div>
         <div class="left floated content">
-          <p>Historia</p>
+          <p>{{ theme.name }}</p>
         </div>
       </div>
   </div>
