@@ -8,13 +8,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ThemeListComponent } from './components/theme-list/theme-list.component';
 import {routes} from './routes';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { CardComponent } from './components/card-list/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ThemeListComponent
+    ThemeListComponent,
+    CardListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
