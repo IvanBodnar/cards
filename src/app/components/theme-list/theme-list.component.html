@@ -4,7 +4,11 @@
     <div class="ui middle aligned divided selection list">
       <div *ngFor="let theme of themesArray" class="item">
         <div class="right floated content">
-          <div class="ui orange basic button">Comenzar</div>
+          <div
+            [routerLink]="['/cards/1']"
+            class="ui orange basic button"
+            >Comenzar
+          </div>
         </div>
         <div class="ui left floated red horizontal label">9</div>
         <div class="left floated content">
