@@ -5,6 +5,6 @@ import {ThemeListComponent} from './components/theme-list/theme-list.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: '/home', component: HomeComponent},
-  {path: '/themes', component: ThemeListComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'themes', component: ThemeListComponent}
 ];
