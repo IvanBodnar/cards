@@ -16,4 +16,8 @@ export class DataService {
   getThemes() {
     return this.http.get<ThemeModel[]>(this.url + '/themes');
   }
+
+  getCards() {
+    return this.http.get<CardModel[]>(this.url + '/cards');
+  }
 }
