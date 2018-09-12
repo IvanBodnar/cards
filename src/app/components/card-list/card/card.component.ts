@@ -8,6 +8,7 @@ import {CardModel} from '../../../models/card.model';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  frontSide = true; // Si es true la tarjeta está de frente.
   card: CardModel;
 
   constructor(
@@ -15,10 +16,14 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // setTimeOut para esperar a que se inicialice CardService.
     setTimeout(
       () =>  this.card = this.cardService.getCard(0),
       100
     );
   }
 
+  flipCard() {
+    this.frontSide = !this.frontSide;
+  }
 }

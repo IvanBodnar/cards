@@ -5,12 +5,17 @@
     <div id="card" class="ui card">
       <div class="content">
         <div class="description">
-          <p>Content</p>
+          <p>{{ frontSide ? card.front : card.back }}</p>
         </div>
       </div>
       <div class="extra content">
         <span class="left floated like">
-          <button class="ui tiny button basic orange">Ver Dorso</button>
+          <button
+            (click)="flipCard()"
+            class="ui tiny button basic orange"
+            >
+            {{ frontSide ? 'Ver Dorso' : 'Ver Frente' }}
+          </button>
         </span>
         <span class="right floated star">
           <a>
