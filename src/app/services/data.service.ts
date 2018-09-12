@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {ThemeModel} from '../models/theme.model';
+import {CardModel} from '../models/card.model';
 
 @Injectable({
   providedIn: 'root'
