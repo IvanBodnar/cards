@@ -17,7 +17,6 @@ export class CardService implements OnInit {
       .subscribe(
         (cards: CardModel[]) => {
           this.cardsArray = cards;
-          console.log(this.cardsArray);
         }
       );
   }
