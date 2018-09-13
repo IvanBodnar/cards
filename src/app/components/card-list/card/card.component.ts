@@ -18,12 +18,16 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     // setTimeOut para esperar a que se inicialice CardService.
     setTimeout(
-      () =>  this.card = this.cardService.getCard(0),
+      () =>  this.card = this.cardService.getCard(),
       100
     );
   }
 
-  flipCard() {
+  flipCard(): void {
     this.frontSide = !this.frontSide;
+  }
+
+  nextCard(): void {
+    this.card = this.cardService.getCard();
   }
 }

@@ -4,12 +4,12 @@
 
     <div id="card" class="ui card">
       <div class="content">
-        <div class="description">
+        <div *ngIf="card" class="description">
           <p>{{ frontSide ? card.front : card.back }}</p>
         </div>
       </div>
       <div class="extra content">
-        <span class="left floated like">
+        <span class="left floated">
           <button
             (click)="flipCard()"
             class="ui tiny button basic orange"
@@ -17,8 +17,8 @@
             {{ frontSide ? 'Ver Dorso' : 'Ver Frente' }}
           </button>
         </span>
-        <span class="right floated star">
-          <a>
+        <span class="right floated">
+          <a (click)="nextCard()">
             <i class="chevron circle right big orange icon"></i>
           </a>
         </span>
