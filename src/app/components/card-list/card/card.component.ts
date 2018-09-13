@@ -28,6 +28,7 @@ export class CardComponent implements OnInit {
   }
 
   nextCard(): void {
+    this.frontSide = true;
     this.card = this.cardService.getCard();
   }
 }
