@@ -10,6 +10,10 @@ import {DataService} from './data.service';
 export class CardService implements OnInit {
   cardsArray: CardModel[];
 
+  _randomIndex(maxNumber: number): number {
+    return Math.floor(Math.random() * Math.floor(maxNumber));
+  }
+
   constructor(
     private dataService: DataService
   ) {
@@ -21,11 +25,9 @@ export class CardService implements OnInit {
       );
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-  getCard(index: number) {
-    return this.cardsArray[index];
+  getCard(): CardModel {
+    return this.cardsArray[this._randomIndex(this.cardsArray.length)];
   }
 }
