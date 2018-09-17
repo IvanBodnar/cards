@@ -5,7 +5,12 @@
       <div *ngFor="let theme of themesArray" class="item">
         <div class="right floated content">
           <div
-            [routerLink]="['/cards/1']"
+            [routerLink]="['/theme/', theme.id]"
+            class="ui orange basic button"
+          >Editar
+          </div>
+          <div
+            [routerLink]="['/cards/', theme.id]"
             class="ui orange basic button"
             >Comenzar
           </div>
