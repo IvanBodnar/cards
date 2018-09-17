@@ -1,3 +1,20 @@
-<p>
-  theme-edit works!
-</p>
+
+<div class="ui center aligned basic grid">
+  <div class="ui five wide column">
+
+
+    <form (ngSubmit)="save()" [formGroup]="themeForm">
+      <h3>Nuevo Tema</h3>
+      <div id="theme-input" class="ui action input">
+        <input
+          formControlName="themeName"
+          type="text"
+          placeholder="Nombre del Tema"
+        >
+        <button class="ui orange basic button">Aceptar</button>
+      </div>
+    </form>
+
+
+  </div>
+</div>
