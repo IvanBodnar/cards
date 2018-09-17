@@ -4,14 +4,17 @@
 
 
     <form (ngSubmit)="save()" [formGroup]="themeForm">
-      <h3>Nuevo Tema</h3>
+      <h3>{{ state === 'add' ? 'Agregar Tema' : 'Editar Tema'  }}</h3>
       <div id="theme-input" class="ui action input">
         <input
           formControlName="themeName"
           type="text"
           placeholder="Nombre del Tema"
         >
-        <button class="ui orange basic button">Aceptar</button>
+        <button
+          class="ui orange basic button"
+          >Aceptar
+        </button>
       </div>
     </form>
 
