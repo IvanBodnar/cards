@@ -6,7 +6,7 @@ import {ThemeModel} from '../../../models/theme.model';
 import {DataService} from '../../../services/data.service';
 
 
-enum State {
+export enum State {
   add = 'add',
   edit = 'edit'
 }
