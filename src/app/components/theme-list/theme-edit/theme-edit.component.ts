@@ -41,9 +41,19 @@ export class ThemeEditComponent implements OnInit {
       this.dataService
         .saveTheme( Object.assign( this.theme, this.themeForm.value ) )
         .subscribe(
-          (theme) => theme
+          (theme) => theme,
+          error1 => console.log(error1)
         );
+    } else if (this.state === State.edit) {
+      this.theme.id = this.themeId;
+      this.dataService
+        .saveTheme( Object.assign( this.theme, this.themeForm.value ) )
+        .subscribe(
+          theme => theme,
+          error1 => console.log(error1)
+        );
+    } else {
+      throw Error('themeForm state is undefined');
     }
   }
-
 }
