@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {ThemeModel} from '../models/theme.model';
 import {CardModel} from '../models/card.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable({
@@ -30,10 +30,17 @@ export class DataService {
 
     if (theme.id === undefined) {
       return this.createTheme(theme, headers);
+    } else {
+      return this.editTheme(theme, headers);
     }
   }
 
   createTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
     return this.http.post<ThemeModel>(this.url + '/themes', theme, {headers: headers});
+  }
+
+  editTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
+    this.http.put<void>(this.url + '/put/' + theme.id, theme, {headers: headers});
+    return of(theme);
   }
 }
