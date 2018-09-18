@@ -40,7 +40,6 @@ export class DataService {
   }
 
   editTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
-    this.http.put<void>(this.url + '/put/' + theme.id, theme, {headers: headers});
-    return of(theme);
+    return this.http.put<ThemeModel>(this.url + '/themes/' + theme.id, theme, {headers: headers});
   }
 }
