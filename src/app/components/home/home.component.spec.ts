@@ -3,11 +3,9 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 import { HomeComponent } from './home.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
-import {routes} from '../../routes';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {ThemeListComponent} from '../theme-list/theme-list.component';
-import {CardComponent} from '../card-list/card/card.component';
 
 describe('HomeComponent', () => {
   let location: Location;
@@ -17,9 +15,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent, ThemeListComponent, CardComponent ],
+      declarations: [ HomeComponent, ThemeListComponent ],
       imports: [
-        RouterTestingModule.withRoutes(routes)
+        RouterTestingModule.withRoutes([
+          {path: 'home', component: HomeComponent},
+          {path: 'themes', component: ThemeListComponent}])
       ]
     })
     .compileComponents();
