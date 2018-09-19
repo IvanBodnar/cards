@@ -8,6 +8,7 @@ import {ThemeModel} from '../../../models/theme.model';
 import {SpyObject} from '@angular/core/testing/src/testing_internal';
 import {ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('ThemeEditComponent', () => {
@@ -27,7 +28,7 @@ describe('ThemeEditComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ ThemeEditComponent ],
-      imports: [ ReactiveFormsModule ],
+      imports: [ ReactiveFormsModule, RouterTestingModule ],
       providers: [
         { provide: ActivatedRoute, useValue: { snapshot: { params: {'id': 0} } } },
         { provide: DataService, useValue: mockDataService }

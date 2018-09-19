@@ -31,7 +31,10 @@ export class ThemeEditComponent implements OnInit {
 
   ngOnInit() {
     this.themeId = +this.route.snapshot.params['id'];
-    this.themeName = this.route.snapshot.queryParams['name'];
+    try {
+      this.themeName = this.route.snapshot.queryParams['name'];
+    } catch (e) {  }
+
     this.state = this.themeId === 0 ? State.add : State.edit;
     this.themeForm = new FormGroup({
       name: new FormControl(this.themeName)
