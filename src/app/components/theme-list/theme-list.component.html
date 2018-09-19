@@ -6,6 +6,7 @@
         <div class="right floated content">
           <div
             [routerLink]="['/theme/', theme.id, 'edit']"
+            [queryParams]="{name: theme.name}"
             class="ui orange basic button"
           >Editar
           </div>

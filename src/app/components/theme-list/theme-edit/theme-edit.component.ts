@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 import {ThemeModel} from '../../../models/theme.model';
 import {DataService} from '../../../services/data.service';
+import {ThemeService} from '../../../services/theme.service';
 
 
 export enum State {
@@ -19,21 +20,24 @@ export enum State {
 export class ThemeEditComponent implements OnInit {
   theme = new ThemeModel;
   themeId: number;
+  themeName: string;
   themeForm: FormGroup;
   state: State;
 
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService
-  ) { }
+  ) {  }
 
   ngOnInit() {
     this.themeId = +this.route.snapshot.params['id'];
+    this.themeName = this.route.snapshot.queryParams['name'];
     this.state = this.themeId === 0 ? State.add : State.edit;
     this.themeForm = new FormGroup({
-      name: new FormControl()
+      name: new FormControl(this.themeName)
     });
   }
+
 
   save() {
     if (this.state === State.add) {
@@ -56,4 +60,6 @@ export class ThemeEditComponent implements OnInit {
       throw Error('themeForm state is undefined');
     }
   }
+
+
 }
