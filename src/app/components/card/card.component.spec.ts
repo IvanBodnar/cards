@@ -2,8 +2,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 import { CardComponent } from './card.component';
-import {CardModel} from '../../../models/card.model';
-import {CardService} from '../../../services/card.service';
+import {CardModel} from '../../models/card.model';
+import {CardService} from '../../services/card.service';
 
 
 describe('CardComponent', () => {

@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 
 import {HomeComponent} from './components/home/home.component';
 import {ThemeListComponent} from './components/theme-list/theme-list.component';
-import {CardComponent} from './components/card-list/card/card.component';
+import {CardComponent} from './components/card/card.component';
 import {ThemeEditComponent} from './components/theme-list/theme-edit/theme-edit.component';
 import {CardListComponent} from './components/card-list/card-list.component';
 
