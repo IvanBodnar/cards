@@ -5,7 +5,7 @@
 
     <form (ngSubmit)="save()" [formGroup]="themeForm">
       <h3>{{ state === 'add' ? 'Agregar Tema' : 'Editar Tema'  }}</h3>
-      <div id="theme-input" class="ui action input">
+      <div id="theme-input" class="ui fluid action input">
         <input
           formControlName="name"
           type="text"
@@ -18,6 +18,21 @@
       </div>
     </form>
 
+    <!--Add cards button-->
+    <button
+      [routerLink]="['/cards']"
+      class="ui orange basic fluid button"
+      id="add-cards-button"
+      >{{ state === 'add' ? 'Agregar Tarjetas' : 'Ver Tarjetas'  }}
+    </button>
+
+    <!--Back to themes button-->
+    <button
+      [routerLink]="['/themes']"
+      class="ui orange basic fluid button"
+      id="themes-list-button"
+      >Volver a Temas
+    </button>
 
   </div>
 </div>
