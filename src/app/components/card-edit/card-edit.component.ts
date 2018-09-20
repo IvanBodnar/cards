@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {DataService} from '../../services/data.service';
 
 import {State} from '../../shared/enums';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
   selector: 'app-card-edit',
@@ -13,10 +14,12 @@ import {State} from '../../shared/enums';
 export class CardEditComponent implements OnInit {
   cardForm: FormGroup;
   state: State;
+  themeId: number;
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private themeService: ThemeService
   ) { }
 
   ngOnInit() {
@@ -24,7 +27,7 @@ export class CardEditComponent implements OnInit {
     // @ts-ignore
     $('.menu .item').tab();
 
-
+    this.themeId = this.themeService.currentThemeId;
     this.cardForm = new FormGroup({
       front: new FormControl(),
       back: new FormControl(),

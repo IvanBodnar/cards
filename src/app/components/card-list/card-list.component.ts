@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CardModel} from '../../models/card.model';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute} from '@angular/router';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
   selector: 'app-card-list',
@@ -10,11 +11,12 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CardListComponent implements OnInit {
   cardsArray: CardModel[];
-  private themeId: number;
+  themeId: number;
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private themeService: ThemeService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class CardListComponent implements OnInit {
       .subscribe(
         (cards: CardModel[]) => this.cardsArray = cards
       );
+    this.themeService.currentThemeId = this.themeId;
   }
 
 }
