@@ -17,9 +17,7 @@ export class CardEditComponent implements OnInit {
   themeId: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private dataService: DataService,
-    private themeService: ThemeService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -27,7 +25,6 @@ export class CardEditComponent implements OnInit {
     // @ts-ignore
     $('.menu .item').tab();
 
-    this.themeId = this.themeService.currentThemeId;
     this.cardForm = new FormGroup({
       front: new FormControl(),
       back: new FormControl(),

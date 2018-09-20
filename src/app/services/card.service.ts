@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   providedIn: 'root'
 })
 export class CardService implements OnInit {
-  cardsArray: CardModel[];
+  currentCard: CardModel;
 
   _randomIndex(maxNumber: number): number {
     return Math.floor(Math.random() * Math.floor(maxNumber));
