@@ -12,6 +12,7 @@ import {routes} from './routes';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardComponent } from './components/card/card.component';
 import { ThemeEditComponent } from './components/theme-list/theme-edit/theme-edit.component';
+import { CardEditComponent } from './components/card-edit/card-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ThemeEditComponent } from './components/theme-list/theme-edit/theme-edi
     ThemeListComponent,
     CardListComponent,
     CardComponent,
-    ThemeEditComponent
+    ThemeEditComponent,
+    CardEditComponent
   ],
   imports: [
     BrowserModule,
