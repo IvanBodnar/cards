@@ -1,3 +1,26 @@
-<p>
-  card-list works!
-</p>
+
+<div class="ui center aligned basic grid">
+  <div class="ui five wide column">
+    <div class="ui middle aligned divided selection list">
+      <div *ngFor="let card of cardsArray" class="item">
+        <div class="right floated content">
+          <div
+            [routerLink]="['/card/', card.id, 'edit']"
+            class="ui orange basic button"
+          >Editar
+          </div>
+        </div>
+        <div class="left floated content">
+          <p>{{ card.front }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Add button-->
+    <button
+      [routerLink]="['/card/', 0, 'edit']"
+      class="ui orange basic fluid button"
+    >Agregar Tarjeta
+    </button>
+  </div>
+</div>
