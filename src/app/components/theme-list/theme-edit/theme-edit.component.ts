@@ -1,16 +1,13 @@
-import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 import {ThemeModel} from '../../../models/theme.model';
 import {DataService} from '../../../services/data.service';
-import {ThemeService} from '../../../services/theme.service';
+import {State} from '../../../shared/enums';
 
 
-export enum State {
-  add = 'add',
-  edit = 'edit'
-}
+
 
 @Component({
   selector: 'app-theme-edit',
