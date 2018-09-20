@@ -4,6 +4,8 @@ import {By} from '@angular/platform-browser';
 import { CardComponent } from './card.component';
 import {CardModel} from '../../models/card.model';
 import {CardService} from '../../services/card.service';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 
 describe('CardComponent', () => {
@@ -25,6 +27,12 @@ describe('CardComponent', () => {
       declarations: [ CardComponent ],
       providers: [
         { provide: CardService, useValue: mockCardService }
+      ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes(
+          [{path: 'card/:id', component: CardComponent}]
+        )
       ]
     })
     .compileComponents();
@@ -38,13 +46,6 @@ describe('CardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should populate "card" attribute when initialized', (done) => {
-    setTimeout(() => {
-      expect(component.card).toEqual(CARD);
-      done();
-    }, 100);
   });
 
   it('should change side when flip button is clicked', () => {

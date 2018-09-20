@@ -1,10 +1,9 @@
-import {TestBed, inject, async} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
 
 import { DataService } from './data.service';
 import {CardModel} from '../models/card.model';
 import {ThemeModel} from '../models/theme.model';
-import {HttpHeaders} from '@angular/common/http';
 
 
 describe('DataService', () => {
@@ -42,7 +41,7 @@ describe('DataService', () => {
 
   describe('getCards', () => {
     it('should get an array with one card object', () => {
-      service.getCards().subscribe(data => {
+      service.getCards(1).subscribe(data => {
         expect(data[0]).toEqual({
           id: 1,
           front: 'front',
@@ -51,7 +50,7 @@ describe('DataService', () => {
         } as CardModel);
       });
 
-      const req = httpTestingController.expectOne('http://localhost:3000/cards');
+      const req = httpTestingController.expectOne('http://localhost:3000/cards?themeId=1');
       expect(req.request.method).toBe('GET');
       req.flush([
         {

@@ -31,7 +31,7 @@ describe('Cardservice', () => {
 
     mockDataService.getCards.and.returnValue(of(CARDS));
 
-    cardService = new CardService(mockDataService);
+    cardService = new CardService();
   });
 
   describe('CardService Creation', () => {
@@ -40,15 +40,10 @@ describe('Cardservice', () => {
     });
   });
 
-  describe('cardsArray', () => {
-    it('should have one CardModel object', () => {
-      expect(cardService.cardsArray.length).toBe(1);
-    });
-  });
 
   describe('getCard()', () => {
     it('should return one CardModel object', () => {
-      card = cardService.getCard();
+      card = cardService.getCard(CARDS);
       expect(card).toEqual(CARDS[0]);
     });
   });

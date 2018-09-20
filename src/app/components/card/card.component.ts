@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CardService} from '../../services/card.service';
 import {CardModel} from '../../models/card.model';
+import {ActivatedRoute} from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-card',
@@ -9,18 +11,25 @@ import {CardModel} from '../../models/card.model';
 })
 export class CardComponent implements OnInit {
   frontSide = true; // Si es true la tarjeta está de frente.
+  cardsArray: CardModel[];
   card: CardModel;
+  private themeId: number;
 
   constructor(
-    private cardService: CardService
+    private route: ActivatedRoute,
+    private cardService: CardService,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
-    // setTimeOut para esperar a que se inicialice CardService.
-    setTimeout(
-      () =>  this.card = this.cardService.getCard(),
-      100
-    );
+    this.themeId = +this.route.snapshot.params['id'];
+    this.dataService.getCards(this.themeId)
+      .subscribe(
+        data => {
+          this.cardsArray = data;
+          this.nextCard();
+        }
+      );
   }
 
   flipCard(): void {
@@ -29,6 +38,6 @@ export class CardComponent implements OnInit {
 
   nextCard(): void {
     this.frontSide = true;
-    this.card = this.cardService.getCard();
+    this.card = this.cardService.getCard(this.cardsArray);
   }
 }

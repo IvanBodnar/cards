@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 
 import {CardModel} from '../models/card.model';
 import {DataService} from './data.service';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Injectable({
@@ -14,20 +15,12 @@ export class CardService implements OnInit {
     return Math.floor(Math.random() * Math.floor(maxNumber));
   }
 
-  constructor(
-    private dataService: DataService
-  ) {
-    this.dataService.getCards()
-      .subscribe(
-        (cards: CardModel[]) => {
-          this.cardsArray = cards;
-        }
-      );
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
-  getCard(): CardModel {
-    return this.cardsArray[this._randomIndex(this.cardsArray.length)];
+  getCard(cardsArray: CardModel[]): CardModel {
+    return cardsArray[this._randomIndex(cardsArray.length)];
   }
+
 }
