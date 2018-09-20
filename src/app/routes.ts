@@ -9,7 +9,7 @@ import {CardListComponent} from './components/card-list/card-list.component';
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'themes', component: ThemeListComponent},
-  {path: 'cards', component: CardListComponent},
+  {path: 'cards/:themeId', component: CardListComponent},
   {path: 'cards/:id', component: CardComponent},
   {path: 'theme/:id/edit', component: ThemeEditComponent},
   {path: '', component: HomeComponent}

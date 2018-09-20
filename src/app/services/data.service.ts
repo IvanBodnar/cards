@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 import {ThemeModel} from '../models/theme.model';
 import {CardModel} from '../models/card.model';
-import {Observable, of} from 'rxjs';
-import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,8 @@ export class DataService {
     return this.http.get<ThemeModel[]>(this.url + '/themes');
   }
 
-  getCards() {
-    return this.http.get<CardModel[]>(this.url + '/cards');
+  getCards(themeId: number) {
+    return this.http.get<CardModel[]>(this.url + '/cards?themeId=' + themeId);
   }
 
   saveTheme(theme: ThemeModel): Observable<ThemeModel> {

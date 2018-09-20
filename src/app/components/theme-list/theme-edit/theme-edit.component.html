@@ -20,7 +20,7 @@
 
     <!--Add cards button-->
     <button
-      [routerLink]="['/cards']"
+      [routerLink]="['/cards/', themeId]"
       class="ui orange basic fluid button"
       id="add-cards-button"
       >{{ state === 'add' ? 'Agregar Tarjetas' : 'Ver Tarjetas'  }}
