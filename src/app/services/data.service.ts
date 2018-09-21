@@ -27,6 +27,25 @@ export class DataService {
     return this.http.get<CardModel[]>(this.url + '/cards?themeId=' + themeId);
   }
 
+  saveCard(card: CardModel): Observable<CardModel> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    if (card.id === undefined) {
+      return this.createCard(card, headers);
+    } else {
+      return this.editCard(card, headers);
+    }
+  }
+
+  createCard(card: CardModel, headers: HttpHeaders): Observable<CardModel> {
+    return this.http.post<CardModel>(this.url + '/cards', card, {headers: headers});
+  }
+
+  editCard(card: CardModel, headers: HttpHeaders): Observable<CardModel> {
+    return this.http.put<CardModel>(this.url + '/cards/' + card.id, card, {headers: headers});
+  }
+
+
   saveTheme(theme: ThemeModel): Observable<ThemeModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 

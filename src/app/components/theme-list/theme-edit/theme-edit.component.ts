@@ -57,7 +57,7 @@ export class ThemeEditComponent implements OnInit {
           error1 => console.log(error1)
         );
     } else {
-      throw Error('themeForm state is undefined');
+      throw new Error('themeForm state is undefined');
     }
   }
 
