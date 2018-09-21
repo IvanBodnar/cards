@@ -31,4 +31,8 @@ export class CardListComponent implements OnInit {
   editClicked(card: CardModel) {
     this.cardService.currentCard = card;
   }
+
+  newClicked() {
+    this.cardService.currentCard = new CardModel();
+  }
 }
