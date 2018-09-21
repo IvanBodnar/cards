@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {State} from '../../shared/enums';
 import {CardModel} from '../../models/card.model';
-import {tryCatch} from 'rxjs/internal-compatibility';
+import {DataService} from '../../services/data.service';
 
 @Component({
   templateUrl: './card-edit.component.html',
@@ -16,7 +16,8 @@ export class CardEditComponent implements OnInit {
   card: CardModel = new CardModel();
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataService: DataService
   ) {  }
 
   ngOnInit() {
@@ -32,6 +33,28 @@ export class CardEditComponent implements OnInit {
       front: new FormControl(front),
       back: new FormControl(back),
     });
+  }
+
+  save() {
+    if (this.state === State.add) {
+      this.card.id = undefined;
+      this.card.themeId = this.route.snapshot.params['themeId'];
+      this.dataService
+        .saveCard( Object.assign( this.card, this.cardForm.value ) )
+        .subscribe(
+          (card: CardModel) => card,
+          error1 => console.log(error1)
+        );
+    } else if (this.state === State.edit) {
+      this.dataService
+        .saveCard( Object.assign( this.card, this.cardForm.value ) )
+        .subscribe(
+          (card: CardModel) => card,
+          error1 => console.log(error1)
+        );
+    } else {
+      throw new Error('cardForm state is undefined');
+    }
   }
 
 }
