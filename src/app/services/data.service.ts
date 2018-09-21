@@ -19,13 +19,16 @@ export class DataService {
     return this.http.get<ThemeModel[]>(this.url + '/themes');
   }
 
+  getCard(cardId: number): Observable<CardModel> {
+    return this.http.get<CardModel>(this.url + '/cards/' + cardId);
+  }
+
   getCards(themeId: number) {
     return this.http.get<CardModel[]>(this.url + '/cards?themeId=' + themeId);
   }
 
   saveTheme(theme: ThemeModel): Observable<ThemeModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // const options = new RequestOptions({ headers: headers });
 
     if (theme.id === undefined) {
       return this.createTheme(theme, headers);
