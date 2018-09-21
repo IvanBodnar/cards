@@ -8,10 +8,22 @@
     </div>
     <form [formGroup]="cardForm">
       <div class="ui bottom attached tab segment active" data-tab="frente">
-        <textarea name="" id="" cols="40" rows="10" placeholder="Ingrese Texto"></textarea>
+        <textarea
+          formControlName="front"
+          cols="40"
+          rows="10"
+          placeholder="Ingrese Texto"
+          >
+        </textarea>
       </div>
       <div class="ui bottom attached tab segment" data-tab="dorso">
-        <textarea name="" id="" cols="40" rows="10" placeholder="Ingrese Texto"></textarea>
+        <textarea
+          formControlName="back"
+          cols="40"
+          rows="10"
+          placeholder="Ingrese Texto"
+          >
+        </textarea>
       </div>
     </form>
 

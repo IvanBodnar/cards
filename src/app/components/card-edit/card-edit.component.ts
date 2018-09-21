@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {DataService} from '../../services/data.service';
 
 import {State} from '../../shared/enums';
-import {ThemeService} from '../../services/theme.service';
+import {CardService} from '../../services/card.service';
+import {CardModel} from '../../models/card.model';
 
 @Component({
   selector: 'app-card-edit',
@@ -14,10 +14,11 @@ import {ThemeService} from '../../services/theme.service';
 export class CardEditComponent implements OnInit {
   cardForm: FormGroup;
   state: State;
-  themeId: number;
+  card: CardModel;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cardService: CardService
   ) { }
 
   ngOnInit() {
@@ -25,9 +26,10 @@ export class CardEditComponent implements OnInit {
     // @ts-ignore
     $('.menu .item').tab();
 
+    this.card = this.cardService.currentCard;
     this.cardForm = new FormGroup({
-      front: new FormControl(),
-      back: new FormControl(),
+      front: new FormControl(this.card.front),
+      back: new FormControl(this.card.back),
     });
   }
 
