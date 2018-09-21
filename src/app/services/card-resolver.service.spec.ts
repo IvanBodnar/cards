@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CardResolverService } from './card-resolver.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('CardResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CardResolverService]
+      providers: [CardResolverService],
+      imports: [HttpClientTestingModule]
     });
   });
 

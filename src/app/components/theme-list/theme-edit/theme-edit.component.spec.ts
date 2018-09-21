@@ -2,20 +2,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
 
-import {State, ThemeEditComponent} from './theme-edit.component';
+import {ThemeEditComponent} from './theme-edit.component';
 import {DataService} from '../../../services/data.service';
 import {ThemeModel} from '../../../models/theme.model';
-import {SpyObject} from '@angular/core/testing/src/testing_internal';
 import {ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
+import {State} from '../../../shared/enums';
 
 
 describe('ThemeEditComponent', () => {
   let component: ThemeEditComponent;
   let fixture: ComponentFixture<ThemeEditComponent>;
   let mockDataService;
-  let state: State;
 
   const THEME: ThemeModel = {
     id: 1,
@@ -65,5 +64,5 @@ describe('ThemeEditComponent', () => {
 
     expect(mockDataService.saveTheme).toHaveBeenCalledTimes(1);
 
-  })
+  });
 });
