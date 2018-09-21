@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {CardModel} from '../../models/card.model';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute} from '@angular/router';
-import {CardService} from '../../services/card.service';
 
 @Component({
   selector: 'app-card-list',
@@ -15,8 +14,7 @@ export class CardListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService,
-    private cardService: CardService
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -28,11 +26,4 @@ export class CardListComponent implements OnInit {
 
   }
 
-  editClicked(card: CardModel) {
-    this.cardService.currentCard = card;
-  }
-
-  newClicked() {
-    this.cardService.currentCard = new CardModel();
-  }
 }

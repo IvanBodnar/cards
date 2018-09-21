@@ -7,7 +7,6 @@ import {CardModel} from '../models/card.model';
   providedIn: 'root'
 })
 export class CardService implements OnInit {
-  currentCard: CardModel = new CardModel();
 
   _randomIndex(maxNumber: number): number {
     return Math.floor(Math.random() * Math.floor(maxNumber));

@@ -6,7 +6,6 @@
         <div class="right floated content">
           <div
             [routerLink]="['/card/', card.id, 'edit']"
-            (click)="editClicked(card)"
             class="ui orange basic button"
           >Editar
           </div>
@@ -20,7 +19,6 @@
     <!--Add button-->
     <button
       [routerLink]="['/card/', 0, 'edit']"
-      (click)="newClicked()"
       class="ui orange basic fluid button"
     >Agregar Tarjeta
     </button>

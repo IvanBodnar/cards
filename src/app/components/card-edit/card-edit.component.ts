@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {State} from '../../shared/enums';
 import {CardModel} from '../../models/card.model';
+import {tryCatch} from 'rxjs/internal-compatibility';
 
 @Component({
   templateUrl: './card-edit.component.html',
@@ -26,7 +27,6 @@ export class CardEditComponent implements OnInit {
     $('.menu .item').tab();
 
     this.card = this.route.snapshot.data['card'];
-    // his.card = this.cardService.currentCard;
     this.state = this.card === <CardModel>{} ? State.add : State.edit;
     const front = this.card.front;
     const back = this.card.back;

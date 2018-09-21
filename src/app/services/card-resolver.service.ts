@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {CardModel} from '../models/card.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {DataService} from './data.service';
 
 @Injectable({
@@ -16,8 +16,11 @@ export class CardResolverService implements Resolve<CardModel> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<CardModel> | Promise<CardModel> | CardModel {
+  ): Observable<CardModel> {
     const cardId = +route.params['id'];
+    if (cardId === 0) {
+      return of(new CardModel());
+    }
     return this.dataService.getCard(cardId);
   }
 }
