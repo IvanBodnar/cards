@@ -17,9 +17,7 @@ export class CardEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute
-  ) {
-
-  }
+  ) {  }
 
   ngOnInit() {
     // $ declarada globalmente en global.d.ts
@@ -27,7 +25,7 @@ export class CardEditComponent implements OnInit {
     $('.menu .item').tab();
 
     this.card = this.route.snapshot.data['card'];
-    this.state = this.card === <CardModel>{} ? State.add : State.edit;
+    this.state = this.card.id === undefined ? State.add : State.edit;
     const front = this.card.front;
     const back = this.card.back;
     this.cardForm = new FormGroup({
