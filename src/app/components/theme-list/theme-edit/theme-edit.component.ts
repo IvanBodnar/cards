@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 import {ThemeModel} from '../../../models/theme.model';
 import {DataService} from '../../../services/data.service';
 import {State} from '../../../shared/enums';
-
-
 
 
 @Component({
@@ -34,7 +32,7 @@ export class ThemeEditComponent implements OnInit {
 
     this.state = this.themeId === 0 ? State.add : State.edit;
     this.themeForm = new FormGroup({
-      name: new FormControl(this.themeName)
+      name: new FormControl(this.themeName, [Validators.required])
     });
   }
 
@@ -60,6 +58,5 @@ export class ThemeEditComponent implements OnInit {
       throw new Error('themeForm state is undefined');
     }
   }
-
 
 }

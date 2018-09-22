@@ -7,13 +7,16 @@
       <h3>{{ state === 'add' ? 'Agregar Tema' : 'Editar Tema'  }}</h3>
       <div id="theme-input" class="ui fluid action input">
         <input
+          id="theme-edit-input"
           formControlName="name"
           type="text"
           placeholder="Nombre del Tema"
         >
         <button
           class="ui orange basic button"
-          >{{ state === 'add' ? 'Agregar Tema' : 'Cambiar Nombre'  }}
+          [ngClass]="{ disabled: !themeForm.valid }"
+          id="theme-edit-button"
+        >{{ state === 'add' ? 'Agregar Tema' : 'Cambiar Nombre'  }}
         </button>
       </div>
     </form>

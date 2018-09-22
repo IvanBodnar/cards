@@ -63,6 +63,22 @@ describe('ThemeEditComponent', () => {
     console.log(component.themeForm.value);
 
     expect(mockDataService.saveTheme).toHaveBeenCalledTimes(1);
+  });
 
+  // html
+  it('should have the form in invalid state the add theme button disabled when the form loads in State.add', () => {
+    const form = component.themeForm;
+    const themeEditBtnDebugEl = fixture.debugElement.query(By.css('#theme-edit-button'));
+    expect(form.valid).toBeFalsy();
+    expect(themeEditBtnDebugEl.nativeElement.classList).toContain('disabled');
+  });
+
+  it('should have form in valid state and theme button enabled when a value is entered in input', () => {
+    const form = component.themeForm;
+    const themeEditBtnDebugEl = fixture.debugElement.query(By.css('#theme-edit-button'));
+    form.controls['name'].setValue('x');
+    fixture.detectChanges();
+    expect(form.valid).toBeTruthy();
+    expect(themeEditBtnDebugEl.nativeElement.classList).not.toContain('disabled');
   });
 });
