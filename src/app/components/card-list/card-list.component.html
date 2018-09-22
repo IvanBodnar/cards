@@ -1,12 +1,12 @@
 
 <div class="ui center aligned basic grid">
   <div class="ui five wide column">
-    <div class="ui middle aligned divided selection list">
+    <div class="ui middle aligned divided relaxed list">
       <div *ngFor="let card of cardsArray" class="item">
         <div class="right floated content">
           <div
             [routerLink]="['/card/', card.id, 'edit']"
-            class="ui orange basic button"
+            class="ui orange basic small button"
           >Editar
           </div>
         </div>

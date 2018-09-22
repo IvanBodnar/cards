@@ -1,18 +1,18 @@
 
 <div class="ui center aligned basic grid">
   <div class="ui five wide column">
-    <div class="ui middle aligned divided selection list">
+    <div class="ui middle aligned divided relaxed list">
       <div *ngFor="let theme of themesArray" class="item">
         <div class="right floated content">
           <div
             [routerLink]="['/theme/', theme.id, 'edit']"
             [queryParams]="{name: theme.name}"
-            class="ui orange basic button"
+            class="ui orange basic small button"
           >Editar
           </div>
           <div
             [routerLink]="['/card/', theme.id]"
-            class="ui orange basic button"
+            class="ui orange basic small button"
             >Comenzar
           </div>
         </div>
