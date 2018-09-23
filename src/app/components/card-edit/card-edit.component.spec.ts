@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {By} from '@angular/platform-browser';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 import { CardEditComponent } from './card-edit.component';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {CardModel} from '../../models/card.model';
 import {State} from '../../shared/enums';
-import {By} from '@angular/platform-browser';
-
 
 
 describe('CardEditComponent', () => {
@@ -72,7 +71,49 @@ describe('CardEditComponent', () => {
   });
 
   it('should have the correct text for State.edit in the button', () => {
-    const buttonEl = fixture.debugElement.query(By.css('button')).nativeElement;
+    const buttonEl: HTMLButtonElement = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(buttonEl.innerText).toEqual('Guardar Cambios');
+  });
+
+  it('should have button disabled', () => {
+    const buttonEl: HTMLButtonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    expect(buttonEl.classList).toContain('disabled');
+  });
+
+  it('should activate button when value on front or back textarea is different from original', () => {
+    const form: FormGroup = component.cardForm;
+    const buttonEl: HTMLButtonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+
+    form.controls['front'].setValue('test');
+    fixture.detectChanges();
+    expect(buttonEl.classList).not.toContain('disabled');
+
+    form.controls['front'].setValue('front');
+    fixture.detectChanges();
+
+    form.controls['back'].setValue('test');
+    fixture.detectChanges();
+    expect(buttonEl.classList).not.toContain('disabled');
+  });
+
+  it('should disable button when back and front go back to original value', () => {
+    const form: FormGroup = component.cardForm;
+    const buttonEl: HTMLButtonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+
+    form.controls['front'].setValue('test');
+    fixture.detectChanges();
+    expect(buttonEl.classList).not.toContain('disabled');
+
+    form.controls['front'].setValue('front');
+    fixture.detectChanges();
+    expect(buttonEl.classList).toContain('disabled');
+
+    form.controls['back'].setValue('test');
+    fixture.detectChanges();
+    expect(buttonEl.classList).not.toContain('disabled');
+
+    form.controls['back'].setValue('back');
+    fixture.detectChanges();
+    expect(buttonEl.classList).toContain('disabled');
   });
 });

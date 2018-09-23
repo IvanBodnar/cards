@@ -27,6 +27,7 @@
       </div>
       <button
         class="ui orange basic fluid button"
+        [ngClass]="{ disabled: !cardForm.valid }"
         >{{ state === 'add' ? 'Guardar Tarjeta' : 'Guardar Cambios' }}
       </button>
     </form>

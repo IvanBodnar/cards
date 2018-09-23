@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 import {State} from '../../shared/enums';
@@ -30,9 +30,9 @@ export class CardEditComponent implements OnInit {
     const front = this.card.front;
     const back = this.card.back;
     this.cardForm = new FormGroup({
-      front: new FormControl(front),
-      back: new FormControl(back),
-    });
+      front: new FormControl(front, [Validators.required]),
+      back: new FormControl(back, [Validators.required]),
+    }, { validators: this.sameContentValidator.bind(this) });
   }
 
   save() {
@@ -57,4 +57,12 @@ export class CardEditComponent implements OnInit {
     }
   }
 
+  sameContentValidator(control: FormGroup): ValidationErrors | null {
+    if (this.state === State.edit) {
+      const front = control.get('front');
+      const back = control.get('back');
+      return front.value === this.card.front && back.value === this.card.back ? { 'sameContent': true } : null;
+    }
+    return null;
+  }
 }
