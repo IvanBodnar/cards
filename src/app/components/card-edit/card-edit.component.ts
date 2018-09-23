@@ -6,6 +6,7 @@ import {State} from '../../shared/enums';
 import {CardModel} from '../../models/card.model';
 import {DataService} from '../../services/data.service';
 
+
 @Component({
   templateUrl: './card-edit.component.html',
   styleUrls: ['./card-edit.component.css']
