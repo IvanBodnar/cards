@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 import {ThemeModel} from '../../../models/theme.model';
@@ -33,7 +33,7 @@ export class ThemeEditComponent implements OnInit {
     this.state = this.themeId === 0 ? State.add : State.edit;
     this.themeForm = new FormGroup({
       name: new FormControl(this.themeName, [Validators.required])
-    });
+    }, { validators: this.sameContentValidator.bind(this) });
   }
 
 
@@ -57,6 +57,11 @@ export class ThemeEditComponent implements OnInit {
     } else {
       throw new Error('themeForm state is undefined');
     }
+  }
+
+  sameContentValidator(control: FormGroup): ValidationErrors | null {
+    const name = control.get('name');
+    return name.value === this.themeName ? { 'sameContent': true } : null;
   }
 
 }
