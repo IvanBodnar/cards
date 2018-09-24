@@ -15,14 +15,16 @@
 
           <!--Edit icon-->
           <a
-          [routerLink]="['/theme/', theme.id, 'edit']"
-          [queryParams]="{name: theme.name}"
+            id="a-edit"
+            [routerLink]="['/theme/', theme.id, 'edit']"
+            [queryParams]="{name: theme.name}"
           >
             <i  class="edit outline large orange icon"></i>
           </a>
 
           <!--Start icon-->
           <a
+            id="a-start"
             [routerLink]="['/card/', theme.id]"
           >
             <i  class="chevron right large orange icon"></i>

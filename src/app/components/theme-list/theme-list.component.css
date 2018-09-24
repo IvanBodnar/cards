@@ -4,6 +4,10 @@
   min-width: 350px;
 }
 
-a {
+#a-edit {
   margin-left: 15px;
+}
+
+#a-start {
+  margin-left: 10px;
 }
