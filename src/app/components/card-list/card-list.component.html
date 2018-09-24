@@ -4,11 +4,26 @@
     <div class="ui middle aligned divided relaxed list">
       <div *ngFor="let card of cardsArray" class="item">
         <div class="right floated content">
-          <div
+          <!--<div-->
+            <!--[routerLink]="['/card/', card.id, 'edit']"-->
+            <!--class="ui orange basic small button"-->
+          <!--&gt;Editar-->
+          <!--</div>-->
+
+          <!--Delete icon-->
+          <a
+            [routerLink]="[]"
+            >
+            <i  class="trash alternate outline large orange icon"></i>
+          </a>
+
+          <!--Edit icon-->
+          <a
+            id="a-edit"
             [routerLink]="['/card/', card.id, 'edit']"
-            class="ui orange basic small button"
-          >Editar
-          </div>
+            >
+            <i  class="edit outline large orange icon"></i>
+          </a>
         </div>
         <div class="left floated content">
           <p>{{ card.front }}</p>
