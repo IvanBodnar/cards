@@ -23,4 +23,16 @@ export class ThemeListComponent implements OnInit {
       );
   }
 
+  onDelete(theme: ThemeModel): void {
+    this.dataService.deleteTheme(theme)
+      .subscribe(
+        (_theme: ThemeModel) => _theme,
+        null,
+        () => this.dataService.getThemes()
+          .subscribe(
+            (themes: ThemeModel[]) => this.themesArray = themes
+          )
+      );
+  }
+
 }

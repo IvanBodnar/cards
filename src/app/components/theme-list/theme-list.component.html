@@ -7,8 +7,8 @@
 
           <!--Delete icon-->
           <a
-            [routerLink]="[]"
-            [queryParams]="{name: theme.name}"
+            id="a-delete"
+            (click)="onDelete(theme)"
           >
             <i  class="trash alternate outline large orange icon"></i>
           </a>
