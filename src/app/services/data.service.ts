@@ -63,4 +63,10 @@ export class DataService {
   editTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
     return this.http.put<ThemeModel>(this.url + '/themes/' + theme.id, theme, {headers: headers});
   }
+
+  deleteTheme(theme: ThemeModel): Observable<ThemeModel> {
+    console.log('deleteTheme');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<ThemeModel>(this.url + '/themes/' + theme.id, {headers: headers});
+  }
 }

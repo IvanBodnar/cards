@@ -88,4 +88,19 @@ describe('DataService', () => {
       req.flush({id: 1, name: 'test'} as ThemeModel);
     });
   });
+
+  describe('deleteTheme', () => {
+    it('should return a ThemeModel object when a DELETE is made', () => {
+      const data: ThemeModel = {id: 1, name: 'test'};
+      service.deleteTheme(data).subscribe(theme => {
+        expect(theme).toEqual({id: 1, name: 'test'} as ThemeModel);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne('http://localhost:3000/themes/1');
+      expect(req.request.method).toBe('DELETE');
+
+      req.flush({id: 1, name: 'test'} as ThemeModel);
+    });
+
+  });
 });
