@@ -1,10 +1,30 @@
 
-<div class="ui center aligned basic segment">
-  <h1>Bienvenido</h1>
-  <p>X temas disponibles</p>
-  <br>
-  <button [routerLink]="['/themes']" class="ui orange basic button">Ver Temas</button>
-  <button class="ui orange basic button">Agregar Tema</button>
+<div class="ui center aligned basic grid">
+  <div class="ui five wide column">
+
+    <h1>Bienvenido</h1>
+    <p *ngIf="themesCount; else no_themes_p">
+      {{ themesCount }} {{ themesCount | i18nPlural: pluralMapping }}
+    </p>
+    <ng-template #no_themes_p>
+      <p>No hay temas disponibles</p>
+    </ng-template>
+    <br>
+    <button
+      *ngIf="themesCount; else no_themes_button"
+      [routerLink]="['/themes']"
+      class="ui orange basic fluid button"
+      >Ver Temas
+    </button>
+    <ng-template #no_themes_button>
+      <button
+        [routerLink]="['/theme', 0, 'edit']"
+        class="ui orange basic fluid button"
+        >Agregar Tema
+      </button>
+    </ng-template>
+
+  </div>
 </div>
 
 

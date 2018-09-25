@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ThemeModel} from '../models/theme.model';
 import {CardModel} from '../models/card.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class DataService {
     private http: HttpClient
   ) { }
 
-  getThemes() {
+  getThemes(): Observable<ThemeModel[]> {
     return this.http.get<ThemeModel[]>(this.url + '/themes');
   }
 
@@ -65,7 +66,6 @@ export class DataService {
   }
 
   deleteTheme(theme: ThemeModel): Observable<ThemeModel> {
-    console.log('deleteTheme');
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.delete<ThemeModel>(this.url + '/themes/' + theme.id, {headers: headers});
   }
