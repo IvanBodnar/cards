@@ -26,4 +26,16 @@ export class CardListComponent implements OnInit {
 
   }
 
+  onDelete(_card: CardModel): void {
+    this.dataService.deleteCard(_card)
+      .subscribe(
+        (card: CardModel) => card,
+        null,
+        () => this.dataService.getCards(this.themeId)
+          .subscribe(
+            (cards: CardModel[]) => this.cardsArray = cards
+          )
+      );
+  }
+
 }

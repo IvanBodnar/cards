@@ -9,6 +9,14 @@ import {ThemeModel} from '../models/theme.model';
 describe('DataService', () => {
   let httpTestingController: HttpTestingController;
   let service: DataService;
+  const CARDS: CardModel[] = [
+    {
+      id: 1,
+      front: 'front',
+      back: 'back',
+      themeId: 1
+    }
+  ] as CardModel[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,24 +50,12 @@ describe('DataService', () => {
   describe('getCards', () => {
     it('should get an array with one card object', () => {
       service.getCards(1).subscribe(data => {
-        expect(data[0]).toEqual({
-          id: 1,
-          front: 'front',
-          back: 'back',
-          themeId: 1
-        } as CardModel);
+        expect(data[0]).toEqual(CARDS[0]);
       });
 
       const req = httpTestingController.expectOne('http://localhost:3000/cards?themeId=1');
       expect(req.request.method).toBe('GET');
-      req.flush([
-        {
-          id: 1,
-          front: 'front',
-          back: 'back',
-          themeId: 1
-        }
-      ] as CardModel[]);
+      req.flush(CARDS);
     });
   });
 
@@ -101,6 +97,19 @@ describe('DataService', () => {
 
       req.flush({id: 1, name: 'test'} as ThemeModel);
     });
+  });
 
+  describe('deleteCard', () => {
+    it('should return a CardModel object when a DELETE is made', () => {
+      const data: CardModel = CARDS[0];
+      service.deleteCard(data).subscribe(card => {
+        expect(card).toEqual(data);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne('http://localhost:3000/cards/1');
+      expect(req.request.method).toBe('DELETE');
+
+      req.flush(data);
+    });
   });
 });

@@ -46,6 +46,10 @@ export class DataService {
     return this.http.put<CardModel>(this.url + '/cards/' + card.id, card, {headers: headers});
   }
 
+  deleteCard(card: CardModel): Observable<CardModel> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete<CardModel>(this.url + '/cards/' + card.id, {headers: headers});
+  }
 
   saveTheme(theme: ThemeModel): Observable<ThemeModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
