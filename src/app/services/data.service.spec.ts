@@ -14,7 +14,7 @@ describe('DataService', () => {
       id: 1,
       front: 'front',
       back: 'back',
-      themeId: 1
+      theme: 1
     }
   ] as CardModel[];
 
@@ -53,7 +53,7 @@ describe('DataService', () => {
         expect(data[0]).toEqual(CARDS[0]);
       });
 
-      const req = httpTestingController.expectOne('http://localhost:3000/cards?themeId=1');
+      const req = httpTestingController.expectOne('http://localhost:3000/cards?theme=1');
       expect(req.request.method).toBe('GET');
       req.flush(CARDS);
     });

@@ -39,7 +39,7 @@ export class CardEditComponent implements OnInit {
   save() {
     if (this.state === State.add) {
       this.card.id = undefined;
-      this.card.themeId = this.route.snapshot.params['themeId'];
+      this.card.theme = this.route.snapshot.params['themeId'];
       this.dataService
         .saveCard( Object.assign( this.card, this.cardForm.value ) )
         .subscribe(

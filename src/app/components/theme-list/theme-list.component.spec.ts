@@ -25,7 +25,7 @@ describe('ThemeListComponent', () => {
       id: 1,
       front: 'front',
       back: 'back',
-      themeId: 1
+      theme: 1
     } as CardModel
   ];
 

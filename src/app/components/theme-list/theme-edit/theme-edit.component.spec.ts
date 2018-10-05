@@ -47,7 +47,7 @@ describe('ThemeEditComponent - State.add', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have attribute "themeId" with value 0 after onInit', () => {
+  it('should have attribute "theme" with value 0 after onInit', () => {
     expect(component.themeId).toEqual(0);
   });
 
@@ -121,7 +121,7 @@ describe('ThemeEditComponent - State.edit', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have attribute "themeId" with value 1 after onInit', () => {
+  it('should have attribute "theme" with value 1 after onInit', () => {
     expect(component.themeId).toEqual(1);
   });
 

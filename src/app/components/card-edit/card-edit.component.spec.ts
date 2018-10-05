@@ -18,7 +18,7 @@ describe('CardEditComponent - State.edit', () => {
     id: 1,
     front: 'front',
     back: 'back',
-    themeId: 1
+    theme: 1
   };
   const route = {
       snapshot: {

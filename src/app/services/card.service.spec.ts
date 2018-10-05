@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { CardService } from './card.service';
 import {of} from 'rxjs';
@@ -13,7 +13,7 @@ describe('Cardservice', () => {
       id: 1,
       front: 'front',
       back: 'back',
-      themeId: 1
+      theme: 1
     }
   ];
 

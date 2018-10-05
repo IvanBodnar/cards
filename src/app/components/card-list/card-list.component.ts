@@ -18,7 +18,7 @@ export class CardListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.themeId = +this.route.snapshot.params['themeId'];
+    this.themeId = +this.route.snapshot.params['theme'];
     this.dataService.getCards(this.themeId)
       .subscribe(
         (cards: CardModel[]) => this.cardsArray = cards
