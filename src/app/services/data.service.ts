@@ -17,15 +17,15 @@ export class DataService {
   ) { }
 
   getThemes(): Observable<ThemeModel[]> {
-    return this.http.get<ThemeModel[]>(this.url + '/themes/');
+    return this.http.get<ThemeModel[]>(this.url + '/themes');
   }
 
   getCard(cardId: number): Observable<CardModel> {
-    return this.http.get<CardModel>(this.url + '/cards/' + cardId + '/');
+    return this.http.get<CardModel>(this.url + '/cards/' + cardId);
   }
 
   getCards(themeId: number) {
-    return this.http.get<CardModel[]>(this.url + '/cards?theme=' + themeId + '/');
+    return this.http.get<CardModel[]>(this.url + '/cards/?theme=' + themeId);
   }
 
   saveCard(card: CardModel): Observable<CardModel> {
@@ -39,7 +39,7 @@ export class DataService {
   }
 
   createCard(card: CardModel, headers: HttpHeaders): Observable<CardModel> {
-    return this.http.post<CardModel>(this.url + '/cards/', card, {headers: headers});
+    return this.http.post<CardModel>(this.url + '/cards/0/edit', card, {headers: headers});
   }
 
   editCard(card: CardModel, headers: HttpHeaders): Observable<CardModel> {
@@ -62,7 +62,7 @@ export class DataService {
   }
 
   createTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
-    return this.http.post<ThemeModel>(this.url + '/themes/', theme, {headers: headers});
+    return this.http.post<ThemeModel>(this.url + '/themes/0/edit', theme, {headers: headers});
   }
 
   editTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
