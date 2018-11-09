@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
+import { environment } from '../../environments/environment';
 import {ThemeModel} from '../models/theme.model';
 import {CardModel} from '../models/card.model';
 
@@ -10,22 +11,22 @@ import {CardModel} from '../models/card.model';
   providedIn: 'root'
 })
 export class DataService {
-  url = 'http://localhost:8000';
+  url = environment.apiUrl + '/api/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getThemes(): Observable<ThemeModel[]> {
-    return this.http.get<ThemeModel[]>(this.url + '/themes');
+    return this.http.get<ThemeModel[]>(this.url + 'themes');
   }
 
   getCard(cardId: number): Observable<CardModel> {
-    return this.http.get<CardModel>(this.url + '/cards/' + cardId);
+    return this.http.get<CardModel>(this.url + 'cards/' + cardId);
   }
 
   getCards(themeId: number) {
-    return this.http.get<CardModel[]>(this.url + '/cards/?theme=' + themeId);
+    return this.http.get<CardModel[]>(this.url + 'cards/?theme=' + themeId);
   }
 
   saveCard(card: CardModel): Observable<CardModel> {
@@ -62,15 +63,15 @@ export class DataService {
   }
 
   createTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
-    return this.http.post<ThemeModel>(this.url + '/themes/0/edit', theme, {headers: headers});
+    return this.http.post<ThemeModel>(this.url + 'themes/0/edit', theme, {headers: headers});
   }
 
   editTheme(theme: ThemeModel, headers: HttpHeaders): Observable<ThemeModel> {
-    return this.http.put<ThemeModel>(this.url + '/themes/' + theme.id, theme, {headers: headers});
+    return this.http.put<ThemeModel>(this.url + 'themes/' + theme.id, theme, {headers: headers});
   }
 
   deleteTheme(theme: ThemeModel): Observable<ThemeModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.delete<ThemeModel>(this.url + '/themes/' + theme.id, {headers: headers});
+    return this.http.delete<ThemeModel>(this.url + 'themes/' + theme.id, {headers: headers});
   }
 }
